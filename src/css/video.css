@@ -1,0 +1,15 @@
+.wrapper {
+	width: 100%;
+}
+
+h2 {
+	text-align: center;
+	color: black;
+}
+
+.vid {
+  width: 100%;
+  height: 60vh;
+  text-align: center;
+  background-color: black;
+}

@@ -1,0 +1,13 @@
+.wrapper {
+	width: 100%;
+}
+
+.logo {
+	padding-left: 30px;
+}
+
+nav {
+	 line-height: 62px;
+	 box-shadow:none!important;
+	 -webkit-box-shadow: none!important;
+}

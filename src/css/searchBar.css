@@ -1,0 +1,14 @@
+.form {
+	display: inline-block;
+	width: 30em;
+}
+
+.input {
+	color: white;
+	border-color: white!important;
+	margin: 0!important;
+}
+
+.searchButton {
+	float: right!important;
+}
