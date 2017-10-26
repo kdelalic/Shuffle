@@ -25,14 +25,14 @@ export default class SearchBar extends Component {
   render() {
     return (
       <div className="wrapper">
+        <NavItem className="searchButton" onClick={this.handleSubmit}>
+              <Icon>search</Icon>
+        </NavItem>
         <form className="form" onSubmit={this.handleSubmit}>
           <label>
             <input className="input" type="text" value={this.state.value} onChange={this.handleChange} />
           </label>
         </form>
-        <NavItem className="searchButton" onClick={this.handleSubmit}>
-              <Icon>search</Icon>
-        </NavItem>
       </div>
     );
   }

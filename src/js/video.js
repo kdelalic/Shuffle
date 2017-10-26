@@ -9,6 +9,7 @@ export default class Video extends Component {
     super();
     this.state = {
       videoQueue: [],
+      videoTitles: [],
       song: 0
     };
   }
@@ -16,6 +17,10 @@ export default class Video extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.query !== this.props.query) {
       this.updatePlaylist(nextProps.query);
+      
+    }
+    if(nextProps.song !== this.props.song) {
+      this.setState({song: this.props.song});
     }
   }
 
@@ -25,14 +30,33 @@ export default class Video extends Component {
       this.state.song !== nextState.song ||
       this.state.videoQueue !== nextState.videoQueue
     ) {
-		this.state.player.loadVideoById(nextState.videoQueue[nextState.song]);
+  		this.state.player.loadVideoById(nextState.videoQueue[nextState.song]);
+      this.props.titleCallback(nextState.videoTitles[nextState.song]);
+      document.title = nextState.videoTitles[nextState.song];
     }
   }
 
   updatePlaylist(query) {
     searchVideo(query).then(vids => {
+      var shuffledVids = shuffle(vids);
+      var videoIDs = [];
+      var titles = [];
+
+      //Removes "(" and "[" from video title and separates 2d array into two 1d arrays
+      for(var i = 0; i < vids.length; i++){
+        videoIDs[i] = shuffledVids[i][0];
+        if(shuffledVids[i][1].indexOf("(") !== -1){
+          titles[i] = shuffledVids[i][1].replace(shuffledVids[i][1].substring(shuffledVids[i][1].indexOf("("), shuffledVids[i][1].indexOf(")") + 1), "");
+        } else if(shuffledVids[i][1].indexOf("[") !== -1){
+          titles[i] = shuffledVids[i][1].replace(shuffledVids[i][1].substring(shuffledVids[i][1].indexOf("["), shuffledVids[i][1].indexOf("]") + 1), "");
+        } else {
+         titles[i] = shuffledVids[i][1];
+        }
+      }
+
       this.setState({
-        videoQueue: shuffle(vids),
+        videoQueue: videoIDs,
+        videoTitles: titles,
         song: 0
       });
     });
@@ -57,7 +81,7 @@ export default class Video extends Component {
 
   render() {
     return (
-      <div className="wrapper">
+      <div className="wrapperYoutube">
           <YouTube className="vid"
             onReady={this.onPlayerReady.bind(this)}
             onEnd={this.goToNextSong.bind(this)}
@@ -67,8 +91,3 @@ export default class Video extends Component {
     );
   }
 }
-
-// //Function to skip song and play next
-// function nextVideo() {
-//   player.loadVideoById(vid[++song]);
-// }

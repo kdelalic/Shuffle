@@ -1,6 +1,6 @@
 .form {
 	display: inline-block;
-	width: 30em;
+	width: 20em;
 }
 
 .input {
@@ -11,4 +11,8 @@
 
 .searchButton {
 	float: right!important;
+}
+
+.form {
+	float: right;
 }

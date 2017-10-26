@@ -1,13 +1,38 @@
 .wrapper {
-	width: 100%;
+	float: right;
 }
 
 .logo {
 	padding-left: 30px;
+	float: left;
 }
 
 nav {
 	 line-height: 62px;
 	 box-shadow:none!important;
 	 -webkit-box-shadow: none!important;
+}
+
+.brand-logo {
+	height: 100%;
+}
+
+.brand-logo-img {
+	height: 100%;
+	padding-left: 30px;
+}
+
+.nowPlaying {
+	margin: 0;
+	font-size: 1.5em;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 50%;
+    transform: translateY(-50%);
+}
+
+.right {
+	float: none!important;
+	text-align: center;
 }
