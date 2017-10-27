@@ -15,12 +15,11 @@ export default class Video extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    if(nextProps.song !== this.props.song) {
+      this.setState({song: nextProps.song});
+    }
     if (nextProps.query !== this.props.query) {
       this.updatePlaylist(nextProps.query);
-      
-    }
-    if(nextProps.song !== this.props.song) {
-      this.setState({song: this.props.song});
     }
   }
 
@@ -33,6 +32,7 @@ export default class Video extends Component {
   		this.state.player.loadVideoById(nextState.videoQueue[nextState.song]);
       this.props.titleCallback(nextState.videoTitles[nextState.song]);
       document.title = nextState.videoTitles[nextState.song];
+      this.props.playerCallback(this.state.player);
     }
   }
 

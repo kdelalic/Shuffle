@@ -4,13 +4,17 @@
 }
 
 .input {
-	color: white;
-	border-color: white!important;
+	color: black;
+	border-color: black!important;
 	margin: 0!important;
 }
 
 .searchButton {
 	float: right!important;
+}
+
+.searchButton i {
+	color: black;
 }
 
 .form {

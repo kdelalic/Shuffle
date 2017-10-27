@@ -9,10 +9,16 @@
 
 .button {
 	background-color: #70e7e1;
+	color: black;
+	margin-right: 10px;
 }
 
-.button {
-	margin-right: 10px;
+.button:focus {
+	background-color: #70e7e1;
+}
+
+.button:hover {
+	background-color: #21c4bc;
 }
 
 .button:last-child {

@@ -9,9 +9,10 @@ export default class App extends Component {
 	constructor(props) {
 	    super(props);
 	    this.state = {
-	        searchQuery: "system of a down",
+	        searchQuery: "kanye west",
 	        title: "",
-	        song: 0
+	        song: 0,
+	        player: undefined
 	    };    
 	}
 
@@ -27,12 +28,16 @@ export default class App extends Component {
 		this.setState({ song: dataFromChild});
 	}
 
+	player = (dataFromChild) => {
+		this.setState({ player: dataFromChild});
+	}
+
     render() {
 	    return (
 	      <div>
 	        <TopBar parentCallBack={this.myCallback} title={this.state.title}/>
-    		<Video query={this.state.searchQuery} titleCallback={this.title} songCallback={this.song} song={this.state.song}/>
-    		<Controls song={this.state.song} songCallback={this.song} />
+    		<Video query={this.state.searchQuery} titleCallback={this.title} playerCallback={this.player} songCallback={this.song} song={this.state.song}/>
+    		<Controls song={this.state.song} songCallback={this.song} player={this.state.player}/>
 	      </div>
 	    );
   	}

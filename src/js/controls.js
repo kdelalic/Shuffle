@@ -23,14 +23,20 @@ export default class Controls extends Component {
 
   handlePlayPause(event) {
     if(this.state.playPause === "pause"){
+      this.props.player.pauseVideo();
       this.setState({ playPause: "play_arrow"});
     } else if(this.state.playPause === "play_arrow"){
+      this.props.player.playVideo();
       this.setState({ playPause: "pause"});
     } 
   }
 
   handlePrevious(event) {
-    this.props.songCallback(--this.state.song);
+    if(this.state.song - 1 < 0){
+      alert("There are no more previous songs");
+    } else {
+      this.props.songCallback(--this.state.song);
+    }
   }
 
   render() {
