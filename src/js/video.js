@@ -4,6 +4,10 @@ import shuffle from "shuffle-list";
 import searchVideo from "./search.js";
 import "../css/video.css";
 
+/** @module Video */
+/** The class containing the video component.  This component contians the video player where the music videos will be played.
+@name Video */
+
 export default class Video extends Component {
   constructor() {
     super();
@@ -33,9 +37,13 @@ export default class Video extends Component {
       this.props.titleCallback(nextState.videoTitles[nextState.song]);
       document.title = nextState.videoTitles[nextState.song];
       this.props.playerCallback(this.state.player);
+      this.props.songCallback(nextState.song);
     }
   }
 
+  /** Updates the playlist of music videos.  This function uses the calls the searchVideo function and then udates serveral arrays containing videoIDs and song titles.
+  @param {string} query The query that was used that make the search
+  */
   updatePlaylist(query) {
     searchVideo(query).then(vids => {
       var shuffledVids = shuffle(vids);
@@ -61,7 +69,8 @@ export default class Video extends Component {
       });
     });
   }
-
+  /** The event that occurs when the YouTube API has finished loading. When this event occurs, the first video in the playlist begins to play.
+  */
   onPlayerReady(event) {
     this.setState(
       {
@@ -73,6 +82,9 @@ export default class Video extends Component {
     );
   }
 
+  /** The event that is called when the next song needs to be played.  Sets the video player to play the next song in the playlist.
+
+  */
   goToNextSong(event) {
     this.setState({
       song: this.state.song + 1

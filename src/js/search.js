@@ -1,7 +1,14 @@
 import queryString from "query-string";
 
 var n = 0;
-
+/** @module Search */
+/** The search function that uses the YouTube data API to get a list of music videos
+@function
+@name searchVideo
+@param {string} query The search query
+@param {int} pageToken The max number of results on a page
+@param {list} listOfVideoIDs The list in which videoIDs will be placed.
+*/
 export default function searchVideo(query, pageToken, listOfVideoIDs = []) {
   //Resets n variable on call of function
   if(listOfVideoIDs.length === 0) {

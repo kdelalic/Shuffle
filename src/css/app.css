@@ -8,8 +8,8 @@ body {
   font-family: sans-serif;
 }
 
-#player {
-  height: 60vh;
-  width: calc(60vh / 0.56);
-  display: inline-block;
+.box {
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
 }
