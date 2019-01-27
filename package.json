@@ -4,12 +4,12 @@
   "private": true,
   "dependencies": {
     "material-design-icons": "^3.0.1",
-    "materialize-css": "^0.100.2",
-    "query-string": "^5.0.0",
+    "materialize-css": "^1.0.0",
+    "query-string": "^6.2.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-materialize": "^1.0.16",
-    "react-scripts": "1.0.14",
+    "react-materialize": "^2.6.0",
+    "react-scripts": "2.1.3",
     "react-youtube": "^7.5.0",
     "shuffle-list": "^1.0.0"
   },
